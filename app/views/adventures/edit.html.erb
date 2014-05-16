@@ -1,9 +1,9 @@
-<h1>Create A New Adventure</h1>
+<h1>Edit Adventure</h1>
 
 <%= form_for @adventure do |f| %>
 	<%= f.text_field :title, placeholder: "Adventure Title" %>
 	<%= f.text_field :author, placeholder: "Your Name Here" %>
-	<%= f.fields_for :pages, @page do |b| %>
+	<%= f.fields_for :pages, @adventures.pages.build do |b| %>
 	<%=b.text_area :text, placeholder: "Start your adventure story here" %>
 	<%= b.hidden_field  :start, value: "start"  %>
 		<% end %>

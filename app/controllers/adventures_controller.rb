@@ -5,23 +5,25 @@ class AdventuresController < ApplicationController
   end
 
   def show
-    @adventure = params[:id]
-    @start = Adventure.find(@adventure).pages.find_by(name: "start").id
+    @adventure = Adventure.find(params[:id])
+    @start = @adventure.pages.find_by(name: "start").id
     redirect_to adventure_page_path(@adventure, @start)
   end
 
   def new
     @adventure = Adventure.new
+    @page = @adventure.pages.build
+    # @pages = 3.times {@adventure.pages.build}
   end
 
   def create
-    @adventure = Adventure.new(adventure_params)
+    @adventure = Adventure.create(adventure_params)
     @adventure.GUID = SecureRandom.urlsafe_base64(10)
     if @adventure.save
-      redirect_to adventures_path
+     redirect_to new_adventure_page_path(@adventure)
     else
-      flash[:errors] = @adventure.errors.full_messages
-      render :edit
+      # flash[:errors] = @adventure.errors.full_messages
+      render :new
     end
   end
 
@@ -40,13 +42,14 @@ class AdventuresController < ApplicationController
   end
 
   def destroy
+    @adventure = Adventure.find(params[:id])
     @adventure.destroy
     redirect_to root_path
   end
 
   private
     def adventure_params
-      params.require(:adventure).permit(:title, :author) 
+      params.require(:adventure).permit(:title, :author, :pages_attributes => [:name, :text]) 
     end
 
 end

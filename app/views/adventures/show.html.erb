@@ -2,5 +2,11 @@
 
 <!-- adventure[start] -->
 
+<p> by: <%= @adventure.author %>
+	<%=link_to 'Edit', edit_adventure_path(@adventure) %>
+	<%=link_to 'Delete', adventure_path(@adventure), method: 'delete', data: {confirm: 'Are you sure?'} %>
+	<%=link_to 'All Adventures', root_path%>
+
+
 
 
