@@ -1,5 +1,6 @@
 class AdventuresController < ApplicationController
-
+  require: PagesHelper
+  
   def index
     @adventures = Adventure.all
   end
