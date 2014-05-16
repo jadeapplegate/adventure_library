@@ -1,1 +1,16 @@
 <h1> Make a page here </h1>
+
+<%= form_for ([@adventure, @page]) do |f| %>
+	<%= f.text_field :name, placeholder: "Page Name" %>
+	<%= f.text_area :text, placeholder: "Page Text Here" %>
+	<%=f.submit "Continue your adventure" %>
+<% end %>
+
+Or, End Your Adventure: <br />
+
+<%= form_for ([@adventure, @page]) do |f| %>
+	<%= f.hidden_field  :name, value: "end"  %>
+	<%= f.text_area :text, placeholder: "Page Text Here" %>
+	<%=f.submit "End the adventure" %>
+<% end %>
+
