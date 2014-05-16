@@ -3,7 +3,9 @@ AdventureLibrary::Application.routes.draw do
     resources :pages
   end
 
-#               Prefix Verb   URI Pattern                                        Controller#Action
+root to: 'adventures#index'
+
+#              Prefix Verb   URI Pattern                                        Controller#Action
 #     adventure_pages GET    /adventures/:adventure_id/pages(.:format)          pages#index
 #                     POST   /adventures/:adventure_id/pages(.:format)          pages#create
 #  new_adventure_page GET    /adventures/:adventure_id/pages/new(.:format)      pages#new
@@ -20,6 +22,7 @@ AdventureLibrary::Application.routes.draw do
 #                     PATCH  /adventures/:id(.:format)                          adventures#update
 #                     PUT    /adventures/:id(.:format)                          adventures#update
 #                     DELETE /adventures/:id(.:format)                          adventures#destroy
+#                root GET    /                                                  adventures#index
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
