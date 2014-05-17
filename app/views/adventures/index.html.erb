@@ -8,7 +8,7 @@
 	<% end %>
 
 	<h2>Add your library</h2>
-	<%= form_for 'add URL' do |f| %>
+	<%= form_for Library.new do |f| %>
 		<%=f.text_field :url, placeholder: 'Enter URL'%>
 		<%=f.submit 'Submit' %>
 			<% end %>

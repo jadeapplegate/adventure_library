@@ -10,15 +10,22 @@ class AdventuresController < ApplicationController
     redirect_to adventure_page_path(@adventure, @start)
   end
 
-
   def new
     @adventure = Adventure.new
     @page = @adventure.pages.build
     # @pages = 3.times {@adventure.pages.build}
   end
 
+  # def scrape_libraries
+
+  def create_library
+    @library = Library.create(params[:url])
+
+
+  end
+
   def create
-    @adventure = Adventure.create(adventure_params)
+    @adventure = Adventure.new(adventure_params)
     @adventure.GUID = SecureRandom.urlsafe_base64(10)
     if @adventure.save
      redirect_to new_adventure_page_path(@adventure)

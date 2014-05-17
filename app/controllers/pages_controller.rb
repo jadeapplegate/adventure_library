@@ -22,7 +22,6 @@ before_action :load_adventure
 
   def show
     # @page = Page.find(params[:id])
-
     @page = @adventure.pages.find(params[:id])             
     # render adventure_page_path(@adventure, @page)
   end
