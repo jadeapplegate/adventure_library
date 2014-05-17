@@ -1,7 +1,7 @@
 <h1>Jade's Choose Your Own Adventure</h1>
 
 
-<%= link_to "Create a New Adventure", new_adventure_path %><br />
+<%= link_to "Create a New Adventure", new_adventure_path %><br /> <br />
 
 <% @adventures.each do |adventure| %>
 			<%=  link_to adventure.title, adventure_path(adventure) %> by: <%=adventure.author %> <br />

@@ -10,6 +10,7 @@ class AdventuresController < ApplicationController
     redirect_to adventure_page_path(@adventure, @start)
   end
 
+
   def new
     @adventure = Adventure.new
     @page = @adventure.pages.build
