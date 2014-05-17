@@ -48,8 +48,9 @@ end
 # Use unicorn as the app server
 gem 'unicorn'
 
-# gem 'sidekiq'
+gem 'sidekiq'
 
+gem 'typhoeus'
 # gem 'foreman'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

@@ -2,6 +2,7 @@ class AdventuresController < ApplicationController
 
   def index
     @adventures = Adventure.all
+    @library = Library.new
   end
 
   def show
