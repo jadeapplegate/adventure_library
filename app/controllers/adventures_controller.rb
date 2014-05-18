@@ -27,7 +27,7 @@ class AdventuresController < ApplicationController
 
   def create
     @adventure = Adventure.new(adventure_params)
-    @adventure.GUID = SecureRandom.urlsafe_base64(10)
+    @adventure.guid = SecureRandom.urlsafe_base64(10)
     if @adventure.save
      redirect_to new_adventure_page_path(@adventure)
     else

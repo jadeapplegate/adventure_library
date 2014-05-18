@@ -3,7 +3,9 @@ class Adventure < ActiveRecord::Base
   belongs_to :library
   accepts_nested_attributes_for :pages
 
-  #validates :title, length { minimum: 4 }
-  #validates :author, length { minimum: 3 }
-  # validates :GUID, presence: true, length: { is: 10}
+  # before_save
+
+  # validates :title, length: { minimum: 4 }
+  # validates :author, length: { minimum: 3 }
+  validates :guid, presence: true, length: { minimum: 6}
 end

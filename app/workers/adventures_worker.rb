@@ -3,10 +3,15 @@ class AdventuresWorker
   # sidekiq_options queue: "high"
   # sidekiq_options retry: false
   
-  # def perform(snippet_id)
-  #   snippet = Snippet.find(snippet_id)
-  #   uri = URI.parse("http://pygments.appspot.com/")
-  #   request = Net::HTTP.post_form(uri, lang: snippet.language, code: snippet.plain_code)
-  #   snippet.update_attribute(:highlighted_code, request.body)
-  # end
+  # goes to each library and gets the adventures inside of it.
+  def perform(library_id)
+    library = Library.find(library_id)
+    response = Typhoeus.get("#{library.url}/adventures.json")
+    @adventures = JSON.parse(response.body)
+    @adventures['adventures'].each do |adv|
+      if !Adventure.find_by(guid: adv['guid'])
+        library.adventures.create(title: adv['title'], author: adv['author'], guid: adv['guid'], pages_attributes => adv[:pages])
+      end
+    end  
+  end
 end
