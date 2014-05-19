@@ -2,6 +2,9 @@ class LibrariesController < ApplicationController
 
   def index
     @libraries = Library.all
+    respond_to do |format|
+      format.json { render json: @libraries, status: :ok }
+    end
   end
 
   def new

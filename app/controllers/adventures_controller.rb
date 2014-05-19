@@ -3,6 +3,9 @@ class AdventuresController < ApplicationController
   def index
     @adventures = Adventure.all
     @library = Library.new
+    respond_to do |format|
+      format.json { render json: @adventures, status: :ok }
+    end
   end
 
   def show
